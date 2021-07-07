@@ -24,6 +24,116 @@
   color: white;
 }
 
+.Row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.Tweet {
+  width: 600px;
+  padding-top: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: white;
+  border-bottom-width: 1;
+  border-bottom-color: rgb(239, 243, 244);
+}
+
+.Tweet-user-picture-container {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.Tweet-user-picture {
+  border-radius: 46px;
+  box-shadow: '0px 0px 2px rgba(0, 0, 0, 0.02)';
+}
+
+.Tweet-container {
+  flex: 9;
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
+.Tweet-user {
+  color: rgb(15, 20, 25);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.Tweet-username {
+  color: rgb(83, 100, 113);
+  font-weight: 400;
+  font-size: 15px;
+  margin-left: 4px;
+}
+
+.Tweet-separator {
+  color: rgb(83, 100, 113);
+  font-weight: 400;
+  font-size: 15px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: 4px;
+}
+
+.Tweet-timestamp {
+  color: rgb(83, 100, 113);
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.Tweet-message {
+  font-size: 15px;
+  color: rgb(15, 20, 25);
+  font-weight: 400;
+  text-align: left;
+}
+
+.Tweet-public-metrics {
+  justify-content: space-between;
+  flex-direction: row;
+  width: '100%';
+  padding-top: 12px;
+}
+
+.Tweet-public-metric-count {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 13px;
+}
+
+.Tweet-button-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-right: 70px;
+}
+
+.Tweet-circle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+}
+
+.Tweet-button-container:hover {
+  cursor: pointer;
+}
+
 .App-link {
   color: #61dafb;
 }
