@@ -3,6 +3,7 @@ import Retweet from './svgs/Retweet';
 import Like from './svgs/Like';
 import Share from './svgs/Share';
 import IconButton from './IconButton';
+import { getTimeSpan } from '../utils/TimeFormatter';
 
 export default function Tweet({ tweet }) {
     return (
@@ -25,7 +26,7 @@ export default function Tweet({ tweet }) {
                             </span>
                             <span className="Tweet-separator">·</span>
                             <span className="Tweet-timestamp">
-                                <a href={`https://twitter.com/${tweet.user.username}/status/${tweet.id}`} className="Tweet-timestamp-link" target="_blank" rel="noreferrer">{tweet.created_at}</a>
+                                <a href={`https://twitter.com/${tweet.user.username}/status/${tweet.id}`} className="Tweet-timestamp-link" target="_blank" rel="noreferrer">{getTimeSpan(tweet.created_at)}</a>
                             </span>
                         </div>
                     
