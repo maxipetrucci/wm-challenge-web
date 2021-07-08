@@ -1,4 +1,4 @@
-export default function Like({ size, color, count }) {
+export default function Like({ size, color }) {
     const DEFAULT_SIZE = 20;
     const DEFAULT_COLOR = 'rgb(83, 100, 113)';
 
