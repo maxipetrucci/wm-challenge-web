@@ -2,6 +2,7 @@ import Reply from './svgs/Reply';
 import Retweet from './svgs/Retweet';
 import Like from './svgs/Like';
 import Share from './svgs/Share';
+import Verified from './svgs/Verified';
 import IconButton from './IconButton';
 import { getTimeSpan } from '../utils/TimeFormatter';
 
@@ -18,6 +19,11 @@ export default function Tweet({ tweet }) {
                                 <a href={`https://twitter.com/${tweet.user.username}`} className="Tweet-user-link" target="_blank" rel="noreferrer">
                                     {tweet.user.name}
                                 </a>
+                                {tweet.user.verified &&
+                                    <span className="Tweet-user-verified">
+                                        <Verified />
+                                    </span>
+                                }
                             </span>
                             <span className="Tweet-username">
                                 <a href={`https://twitter.com/${tweet.user.username}`} className="Tweet-username-link" target="_blank" rel="noreferrer">
