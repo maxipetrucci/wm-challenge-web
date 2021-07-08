@@ -79,7 +79,7 @@
   color: black;
 }
 
-.Tweet-user-link:link {
+.Tweet-user-link:link, .Tweet-user-link:visited {
   text-decoration: none;
   color: black;
 }
@@ -91,7 +91,7 @@
   margin-left: 4px;
 }
 
-.Tweet-username-link:link, .Tweet-username-link:hover {
+.Tweet-username-link:link, .Tweet-username-link:hover, .Tweet-username-link:visited {
   text-decoration: none;
   color: rgb(83, 100, 113);
 }
@@ -116,7 +116,7 @@
   color: rgb(83, 100, 113);
 }
 
-.Tweet-timestamp-link:link {
+.Tweet-timestamp-link:link, .Tweet-timestamp-link:visited {
   text-decoration: none;
   color: rgb(83, 100, 113);
 }
