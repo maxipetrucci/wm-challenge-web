@@ -1,30 +1,54 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import './App.css';
 import Tweet from './components/Tweet';
 import { getLatestTweets } from './network/NetworkAPI';
 
 function App() {
+  const FETCH_SIZE = 15;
   const [tweets, setTweets] = useState([]);
-  const tweetsRef = useRef(tweets);
+  const [fetchMoreTweets, setFetchMoreTweets] = useState(true);
 
   useEffect(() => {
-    const getOldestTweetId = () => {
-      if (tweetsRef.current.length === 0) {
-        return undefined;
-      }
-  
-      return tweetsRef.current[tweetsRef.current.length - 1].id;
+    fetchTweets()
+  }, [])
+
+  const getOldestTweetId = () => {
+    if (tweets.length === 0) {
+      return undefined;
     }
 
-    getLatestTweets({ fromid: getOldestTweetId()})
-    .then(response => setTweets(response))
+    return tweets[tweets.length - 1].id;
+  }
+
+  const fetchTweets = () => {
+    const oldestTweetId = getOldestTweetId();
+    console.log('Trayendo tweets:', oldestTweetId);
+    getLatestTweets({ fromid: oldestTweetId, limit: FETCH_SIZE })
+    .then(response => {
+      console.log('Respuesta:', response.length);
+      setTweets(tweets.concat(response));
+
+      if (response.length !== FETCH_SIZE) {
+        setFetchMoreTweets(false);
+      }
+    })
     .catch(e => console.log(e));
-  }, []);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        {tweets.map(t => <Tweet key={t.id} tweet={t} />)}
+        <InfiniteScroll
+          dataLength={tweets.length}
+          next={fetchTweets}
+          hasMore={fetchMoreTweets}
+          loader={<p>Consultando más tweets..</p>}
+          endMessage={<p>No hay más tweets</p>}
+          pullDownToRefreshThreshold={300}
+        >
+          {tweets.map(t => <Tweet key={t.id} tweet={t} />)}
+        </InfiniteScroll>
       </header>
     </div>
   );
