@@ -23,10 +23,8 @@ function App() {
 
   const fetchTweets = () => {
     const oldestTweetId = getOldestTweetId();
-    console.log('Trayendo tweets:', oldestTweetId);
-    getLatestTweets({ fromid: oldestTweetId, limit: FETCH_SIZE })
+    getLatestTweets({ untilid: oldestTweetId, limit: FETCH_SIZE })
     .then(response => {
-      console.log('Respuesta:', response.length);
       setTweets(tweets.concat(response));
 
       if (response.length !== FETCH_SIZE) {
@@ -43,9 +41,9 @@ function App() {
           dataLength={tweets.length}
           next={fetchTweets}
           hasMore={fetchMoreTweets}
-          loader={<p>Consultando más tweets..</p>}
+          loader={<p>Obteniendo tweets..</p>}
           endMessage={<p>No hay más tweets</p>}
-          pullDownToRefreshThreshold={300}
+          pullDownToRefreshThreshold={'15%'}
         >
           {tweets.map(t => <Tweet key={t.id} tweet={t} />)}
         </InfiniteScroll>
