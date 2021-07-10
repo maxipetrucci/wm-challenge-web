@@ -132,6 +132,7 @@
   color: rgb(15, 20, 25);
   font-weight: 400;
   text-align: left;
+  white-space: pre-wrap;
 }
 
 .Tweet-public-metrics {
