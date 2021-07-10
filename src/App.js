@@ -26,7 +26,7 @@ function App() {
     getLatestTweets({ untilid: oldestTweetId, limit: FETCH_SIZE })
     .then(response => {
       setTweets(tweets.concat(response));
-
+      console.log(response[response.length - 1].id);
       if (response.length !== FETCH_SIZE) {
         setFetchMoreTweets(false);
       }
