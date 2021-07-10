@@ -1,6 +1,6 @@
-const moment = require("moment")
+const moment = require("moment");
 
-const getTimeSpan = (date, now = new Date().toISOString()) => {
+const getTimeSpan = (date, now = moment().zone(0).format('YYYY-MM-DD[T]HH:mm:ss[.000Z]')) => {
     let secondsSpan = moment(now).diff(date, 'seconds', false);
     if (secondsSpan < 60) {
         return `${secondsSpan}s`;
