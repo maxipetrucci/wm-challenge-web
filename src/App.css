@@ -61,7 +61,30 @@
 .Tweet-container {
   flex: 9;
   padding-bottom: 12px;
-  justify-content: center;
+}
+
+.Tweet-retweet {
+  color: rgb(83, 100, 113);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  flex: 9;
+}
+
+.Tweet-retweet-user {
+  display: flex;
+  align-content: flex-start;
+  margin-left: 12px;
+  color: rgb(83, 100, 113);
+}
+
+.Tweet-retweet-user:link, .Tweet-retweet-user:visited {
+  text-decoration: none;
+}
+
+.Tweet-retweet-user:hover {
+  text-decoration: underline;
+  color: rgb(83, 100, 113);
 }
 
 .Tweet-header {

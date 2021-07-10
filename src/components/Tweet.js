@@ -2,9 +2,9 @@ import Reply from './svgs/Reply';
 import Retweet from './svgs/Retweet';
 import Like from './svgs/Like';
 import Share from './svgs/Share';
-import Verified from './svgs/Verified';
 import IconButton from './IconButton';
 import { getTimeSpan } from '../utils/TimeFormatter';
+import UserLink from './UserLink';
 
 export default function Tweet({ tweet }) {
     const RETWEET_BEGGINING_STRING = 'RT ';
@@ -48,6 +48,15 @@ export default function Tweet({ tweet }) {
 
     return (
         <div className="Tweet">
+            {tweetStructure.retweetingUser &&
+                <div className="Row" style={{ marginBottom: 4 }}>
+                    <div className="Column Tweet-user-picture-container"></div>
+                    <div className="Row Tweet-retweet">
+                        <Retweet size={16} color={'rgb(83, 100, 113)'} />
+                        <UserLink label={`${tweetStructure.retweetingUser} Retweeted`} username={tweetStructure.retweetingUser} className="Tweet-retweet-user" />
+                    </div>
+                </div>
+            }
             <div className="Row">
                 <div className="Column Tweet-user-picture-container">
                     <img width={46} height={46} className="Tweet-user-picture" alt={tweet.user.name} src={tweet.user.image_url} />
@@ -55,19 +64,10 @@ export default function Tweet({ tweet }) {
                 <div className="Column Tweet-container">
                     <div className="Row Tweet-header">
                         <span className="Tweet-user">
-                            <a href={`https://twitter.com/${tweet.user.username}`} className="Tweet-user-link" target="_blank" rel="noreferrer">
-                                {tweet.user.name}
-                            </a>
-                            {tweet.user.verified &&
-                                <span className="Tweet-user-verified">
-                                    <Verified />
-                                </span>
-                            }
+                            <UserLink label={tweet.user.name} username={tweet.user.username} className="Tweet-user-link" verified={tweet.user.verified} />
                         </span>
                         <span className="Tweet-username">
-                            <a href={`https://twitter.com/${tweet.user.username}`} className="Tweet-username-link" target="_blank" rel="noreferrer">
-                                @{tweet.user.username}
-                            </a>
+                            <UserLink label={tweet.user.name} username={tweet.user.username} className="Tweet-username-link" />
                         </span>
                         <span className="Tweet-separator">·</span>
                         <span className="Tweet-timestamp">
@@ -78,7 +78,7 @@ export default function Tweet({ tweet }) {
                     {tweetStructure.replyingToUsers.length > 0 &&
                         <div className="Row Tweet-replyingusers-container">
                             <span className="Tweet-replying-to">Replying to</span>
-                            {tweetStructure.replyingToUsers.map(u => <a href={`https://twitter.com/${u}`} target="_blank" className="Tweet-replyinguser">@{u}</a>)}
+                            {tweetStructure.replyingToUsers.map(u => <UserLink username={u} label={u} className="Tweet-replyinguser" />)}
                         </div>
                     }
                     <div className="Row Tweet-message">
