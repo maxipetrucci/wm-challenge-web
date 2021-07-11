@@ -32,7 +32,7 @@ export default function TweetsList ({ fetchSize, loader, endMessage }) {
         })
         .catch(e => console.log(e));
     }
-  
+
     return (
         <InfiniteScroll
             dataLength={tweets.length}
