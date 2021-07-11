@@ -45,6 +45,7 @@ export default function Tweet({ tweet }) {
     }
 
     const tweetStructure = getTweetStructure(tweet.text);
+    console.log(tweetStructure);
 
     return (
         <div className="Tweet">
@@ -67,7 +68,7 @@ export default function Tweet({ tweet }) {
                             <UserLink label={tweet.user.name} username={tweet.user.username} className="Tweet-user-link" verified={tweet.user.verified} />
                         </span>
                         <span className="Tweet-username">
-                            <UserLink label={tweet.user.name} username={tweet.user.username} className="Tweet-username-link" />
+                            <UserLink username={tweet.user.username} className="Tweet-username-link" />
                         </span>
                         <span className="Tweet-separator">·</span>
                         <span className="Tweet-timestamp">
